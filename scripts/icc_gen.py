@@ -13,6 +13,7 @@ from os.path import isfile
 def run_bench(cmd):
     system('chmod +x run.sh')
     exec_string = '(time ./run.sh) &> ' + arg + '.dat'
+    system(exec_string)
     return cmd
 
 def edit_make(f):
