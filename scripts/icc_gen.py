@@ -12,7 +12,7 @@ from os.path import isfile
 
 def run_bench(cmd):
     system('chmod +x run.sh')
-    exec_string = '(time ./run.sh) &> ' + arg + '.dat'
+    exec_string = '(time ./run.sh) &> ' + str(cmd) + '.dat'
     system(exec_string)
     return cmd
 
@@ -22,7 +22,16 @@ def edit_make(f):
     f.truncate()
     for line in lines:
         if "gcc" in line and "#" not in line:
-            f.write('CC=icc')
+            f.write('CC=icc\n')
+        elif '-O0' in line:
+            nl = ""
+            for char in line:
+                if char == '0':
+                    nl = nl + '3'
+                else:
+                    nl = nl + char
+            f.write(nl)
+
         else:
             f.write(line)
 
@@ -52,6 +61,7 @@ def main():
             print('Completed execution for ', folder)
             print(results)
             results = []
+            chdir('..')
 
 
     print('Done')

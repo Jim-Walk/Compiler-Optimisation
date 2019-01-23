@@ -32,8 +32,8 @@
 #
 # GNU gcc
 #
-CC = gcc
-CFLAGS = -O0 -Wall
+CC=icc
+CFLAGS = -O3 -Wall
 
 OBJ = mpeg2enc.o conform.o putseq.o putpic.o puthdr.o putmpg.o putvlc.o putbits.o motion.o predict.o readpic.o writepic.o transfrm.o fdctref.o idct.o quantize.o ratectl.o stats.o
 

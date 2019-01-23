@@ -1,14 +1,18 @@
 #!/bin/bash --login
 
 # PBS job options (name, compute nodes, job time)
-#PBS -N best-loops
+#PBS -N Comp-Opt-icc
 #PBS -l select=16
-#PBS -l walltime=05:00:00
+#PBS -l walltime=02:00:00
 #PBS -A d167-s1893750
 #PBS -l place=excl
 
 # Change to the directory that the job was submitted from
 # (remember this should be on the /work filesystem)
 cd /lustre/home/d167/s1893750/sem2/Compiler-Optimisation/scripts 
+
+module load intel-compilers-17
+module load spack
+module load libx11-1.6.5-intel-17.0.2-i5l7o6h
 
 ./icc_gen.py

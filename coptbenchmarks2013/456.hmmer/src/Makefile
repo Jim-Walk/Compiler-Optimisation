@@ -9,8 +9,8 @@ SOURCES= alphabet.c core_algorithms.c debug.c display.c emit.c emulation.c \
 	 sre_math.c sre_random.c sre_string.c ssi.c stack.c stockholm.c \
 	 translate.c types.c vectorops.c weight.c
 
-CC=gcc
-CFLAGS=-O0
+CC=icc
+CFLAGS=-O3
 COMP_FLAGS=-lm -DSPEC_CPU -DNDEBUG
 
 all: $(SOURCES)

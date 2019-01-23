@@ -20,8 +20,8 @@ SOURCES= sgf/sgf_utils.c sgf/sgftree.c sgf/sgfnode.c engine/aftermath.c \
 	 patterns/handipat.c utils/getopt.c utils/getopt1.c utils/gg_utils.c \
 	 utils/random.c
 
-CC=gcc
-CFLAGS=-O0
+CC=icc
+CFLAGS=-O3
 COMP_FLAGS=-lm -DSPEC_CPU -DNDEBUG -DHAVE_CONFIG_H -I. -I.. -I../include -I./include
 
 all: $(SOURCES)
