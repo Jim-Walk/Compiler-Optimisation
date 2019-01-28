@@ -3,7 +3,7 @@
 """  icc-gen.py
 This script compiles a benchmarks, with -O3. After
 compiling each benchmark, they are ran in parallel
-to save time. Output is stored in a CSV
+to save time. Output is stored in 10 .dat files
 """
 
 from multiprocessing import Pool as ThreadPool

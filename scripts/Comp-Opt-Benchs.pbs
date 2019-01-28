@@ -11,8 +11,11 @@
 # (remember this should be on the /work filesystem)
 cd /lustre/home/d167/s1893750/sem2/Compiler-Optimisation/scripts 
 
-module load intel-compilers-17
-module load spack
+module load intel-compilers-17/17.0.2.174
+module load spack/cirrus
 module load libx11-1.6.5-intel-17.0.2-i5l7o6h
+module load xproto-7.0.31-intel-17.0.2-5cn7qqr
+module load xextproto-7.3.0-intel-17.0.2-cdutu6k
+module load libxext-1.3.3-gcc-6.2.0-nmfoyir
 
 ./icc_gen.py
