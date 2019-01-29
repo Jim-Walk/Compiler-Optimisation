@@ -13,10 +13,7 @@ def parse_time(string):
     secs = secs + mins * 60
     milli_secs = int(milli_sec_str[:-1:])
     milli_secs = milli_secs + secs * 1000
-    return milli_secs
-
-
-
+    return (milli_secs)
 
 
 
@@ -24,7 +21,7 @@ os.chdir('../coptbenchmarks2013')
 
 for folder in os.listdir():
     if (not os.path.isfile(folder)):
-        print('Entering ', folder)
+        print('Entering ', folder, end='')
         times = int(0)
         for i in list(range(1,11)):
             fname = folder + "/" + str(i) + ".dat"
@@ -32,6 +29,6 @@ for folder in os.listdir():
                 lines = f.readlines()
                 times += parse_time(lines[-3])
 
-        avg = times/10
-        print(avg)
-
+        dg = Data_group.make_data_group(times//10, {'-03':True}, folder)
+        dg.save()
+        print(" saved average")

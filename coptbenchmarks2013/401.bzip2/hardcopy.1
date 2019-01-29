@@ -1,0 +1,73 @@
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+~
+"Data_group.py" 30L, 802C written
+s1893750@cirrus-login2 17:56 Tue Jan 29 ~/sem2/Compiler-Optimisation/scripts/ (master)
+$ ./grab.py
+Entering  mpeg2encTraceback (most recent call last):
+  File "./grab.py", line 33, in <module>
+    dg.save()
+  File "/lustre/home/d167/s1893750/sem2/Compiler-Optimisation/scripts/Data_group.py", line 21, in save
+    f.write(self.avg)
+TypeError: write() argument must be str, not int
+s1893750@cirrus-login2 17:56 Tue Jan 29 ~/sem2/Compiler-Optimisation/scripts/ (master)
+$ ./grab.py
+Entering  mpeg2enc saved average
+Entering  458.sjeng saved average
+Entering  h263enc saved average
+Entering  h263dec saved average
+Entering  470.lbm saved average
+Entering  464.h264ref saved average
+Entering  456.hmmer saved average
+Entering  401.bzip2 saved average
+ saved average
+ saved average
+Entering  462.libquantum saved average
+Entering  445.gobmk saved average
+Entering  mpeg2dec saved average
+Entering  429.mcf saved average
+Entering  433.milc saved average
+s1893750@cirrus-login2 17:56 Tue Jan 29 ~/sem2/Compiler-Optimisation/scripts/ (master)
+$ ll ../coptbenchmarks2013
+total 64
+-rw-r--r-- 1 s1893750 d167    7 Jan 29 17:56 1_1_mpeg2enc.d2f0d11c-8d0a-4af8-9d5c-02a2d9993928.dat.271facf6-9b92-4ef3-a3ed-6269
+8fc46b22.dat
+-rw-r--r-- 1 s1893750 d167    7 Jan 29 17:56 1_401.bzip2.44fbc293-3fc2-463d-a7c1-f4c36de4ceab.dat
+-rw-r--r-- 1 s1893750 d167    7 Jan 29 17:56 1_429.mcf.6513b06f-9d83-449c-942f-af349f5d6a21.dat
+-rw-r--r-- 1 s1893750 d167    8 Jan 29 17:56 1_433.milc.31532f2f-b1d5-4892-ab0c-ff3e35862326.dat
+-rw-r--r-- 1 s1893750 d167    8 Jan 29 17:56 1_445.gobmk.c43558cf-7fa6-4c7c-a8f0-087c199c7c44.dat
+-rw-r--r-- 1 s1893750 d167    6 Jan 29 17:56 1_456.hmmer.1a863649-a6d5-478c-894e-ee53a01cbbf3.dat
+-rw-r--r-- 1 s1893750 d167    7 Jan 29 17:56 1_458.sjeng.e90a648c-40d1-4529-abe8-5db69d065cb9.dat
+-rw-r--r-- 1 s1893750 d167    7 Jan 29 17:56 1_462.libquantum.6c529ea4-7d20-418c-92e3-6025ff4dae28.dat
+-rw-r--r-- 1 s1893750 d167    8 Jan 29 17:56 1_464.h264ref.5694760c-e787-45ef-ae2e-71b4cb685487.dat
+-rw-r--r-- 1 s1893750 d167    7 Jan 29 17:56 1_470.lbm.3942e87a-f67b-4c02-b7ac-e92082f48fb8.dat
+-rw-r--r-- 1 s1893750 d167    6 Jan 29 17:56 1_h263dec.77f0a986-e282-41ac-84e5-69c4ae998421.dat
+-rw-r--r-- 1 s1893750 d167    7 Jan 29 17:56 1_h263enc.f7b3bc21-1c01-4f0a-8f49-bacb9e85b110.dat
+-rw-r--r-- 1 s1893750 d167    6 Jan 29 17:56 1_mpeg2dec.0e8764df-8050-465e-a908-d686101fe944.dat
+-rw-r--r-- 1 s1893750 d167    7 Jan 29 17:56 1_mpeg2enc.aced2cba-b244-4cb7-96b5-baf22bdbf5be.dat
+-rw-r--r-- 1 s1893750 d167    0 Jan 29 17:56 1_mpeg2enc.d2f0d11c-8d0a-4af8-9d5c-02a2d9993928.dat
+-rw-r--r-- 1 s1893750 d167    7 Jan 29 17:56 1_README.01474548-8885-489d-b084-0613d5899857.dat
+drwxr-sr-x 4 s1893750 d167 4096 Jan 29 17:55 401.bzip2
+drwxr-sr-x 4 s1893750 d167 4096 Jan 23 06:51 429.mcf
+drwxr-sr-x 4 s1893750 d167 4096 Jan 23 06:51 433.milc
+drwxr-sr-x 4 s1893750 d167 4096 Jan 23 06:51 445.gobmk
+drwxr-sr-x 4 s1893750 d167 4096 Jan 23 06:51 456.hmmer
+drwxr-sr-x 4 s1893750 d167 4096 Jan 23 06:51 458.sjeng
+drwxr-sr-x 4 s1893750 d167 4096 Jan 23 06:51 462.libquantum
+drwxr-sr-x 4 s1893750 d167 4096 Jan 23 06:51 464.h264ref
+drwxr-sr-x 4 s1893750 d167 4096 Jan 23 06:51 470.lbm
+drwxr-sr-x 4 s1893750 d167 4096 Jan 23 06:51 h263dec
+drwxr-sr-x 4 s1893750 d167 4096 Jan 23 06:51 h263enc
+drwxr-sr-x 4 s1893750 d167 4096 Jan 23 06:51 mpeg2dec
+drwxr-sr-x 4 s1893750 d167 4096 Jan 23 06:50 mpeg2enc
+-rw-r--r-- 1 s1893750 d167 1096 Jan 24  2013 README
+s1893750@cirrus-login2 17:57 Tue Jan 29 ~/sem2/Compiler-Optimisation/scripts/ (master)
+$
