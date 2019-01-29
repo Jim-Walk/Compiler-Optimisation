@@ -2,7 +2,7 @@
 SOURCES= lbm.c main.c
 
 CC=icc
-CFLAGS=-O3
+CFLAGS=-O2
 COMP_FLAGS=-lm -DSPEC_CPU -DNDEBUG
 
 all: $(SOURCES)

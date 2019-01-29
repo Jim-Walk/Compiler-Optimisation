@@ -4,7 +4,7 @@ SOURCES= attacks.c book.c crazy.c draw.c ecache.c epd.c eval.c leval.c \
 	 sjeng.c ttable.c utils.c
 
 CC=icc
-CFLAGS=-O3
+CFLAGS=-O2
 COMP_FLAGS=-lm -DSPEC_CPU -DNDEBUG
 
 all: $(SOURCES)

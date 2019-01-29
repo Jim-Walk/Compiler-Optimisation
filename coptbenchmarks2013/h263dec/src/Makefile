@@ -33,7 +33,7 @@ LIBRARYDIR=-L/usr/X11R6/lib
 #
 
 CC=icc
-CFLAGS =  -O3 $(DEFS) $(USE_DISP) $(USE_SHMEM) $(USE_TIME) $(INCLUDEDIR)
+CFLAGS =  -O2 $(DEFS) $(USE_DISP) $(USE_SHMEM) $(USE_TIME) $(INCLUDEDIR)
 
 
 OBJ = tmndec.o getpic.o getvlc.o gethdr.o getblk.o getbits.o store.o recon.o idct.o idctref.o display.o sac.o dither.o yuv2rgb.o yuvrgb24.o win.o

@@ -21,7 +21,7 @@ SOURCES= sgf/sgf_utils.c sgf/sgftree.c sgf/sgfnode.c engine/aftermath.c \
 	 utils/random.c
 
 CC=icc
-CFLAGS=-O3
+CFLAGS=-O2
 COMP_FLAGS=-lm -DSPEC_CPU -DNDEBUG -DHAVE_CONFIG_H -I. -I.. -I../include -I./include
 
 all: $(SOURCES)

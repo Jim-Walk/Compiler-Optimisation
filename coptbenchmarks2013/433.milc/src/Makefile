@@ -13,7 +13,7 @@ SOURCES= control.c f_meas.c gauge_info.c setup.c update.c update_h.c \
 	 m_amat_hwvec.c dslash_fn2.c d_congrad5_fn.c com_vanilla.c io_nonansi.c
 
 CC=icc
-CFLAGS=-O3
+CFLAGS=-O2
 COMP_FLAGS=-lm -DSPEC_CPU -DNDEBUG -I. -DFN -DFAST -DCONGRAD_TMP_VECTORS -DDSLASH_TMP_LINKS
 
 all: $(SOURCES)

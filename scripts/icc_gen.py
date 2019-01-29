@@ -23,11 +23,11 @@ def edit_make(f):
     for line in lines:
         if "gcc" in line and "#" not in line:
             f.write('CC=icc\n')
-        elif '-O0' in line:
+        elif '-O1' in line:
             nl = ""
             for char in line:
-                if char == '0':
-                    nl = nl + '3'
+                if char == '1':
+                    nl = nl + '2'
                 else:
                     nl = nl + char
             f.write(nl)

@@ -24,7 +24,7 @@ OBJS =	main.o io.o dct.o coder.o quant.o mot_est.o pred.o  snr.o \
 # The defines above can also be defined in sim.h
 
 CC=icc
-CFLAGS = -O3
+CFLAGS = -O2
 
 # If you want to compile with -Wall -pedantic -ansi on a Sun, use 
 # -DBROKEN_SUN_HEADERS to avoid a lot of compiler warnings

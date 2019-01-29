@@ -10,7 +10,7 @@ SOURCES= alphabet.c core_algorithms.c debug.c display.c emit.c emulation.c \
 	 translate.c types.c vectorops.c weight.c
 
 CC=icc
-CFLAGS=-O3
+CFLAGS=-O2
 COMP_FLAGS=-lm -DSPEC_CPU -DNDEBUG
 
 all: $(SOURCES)

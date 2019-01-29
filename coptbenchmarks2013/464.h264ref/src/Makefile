@@ -8,7 +8,7 @@ SOURCES= annexb.c biariencode.c block.c cabac.c configfile.c context_ini.c \
 	 slice.c transform8x8.c vlc.c weighted_prediction.c specrand.c
 
 CC=icc
-CFLAGS=-O3
+CFLAGS=-O2
 COMP_FLAGS=-lm -DSPEC_CPU -DNDEBUG
 
 all: $(SOURCES)

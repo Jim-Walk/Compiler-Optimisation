@@ -4,7 +4,7 @@ SOURCES= classic.c complex.c decoherence.c expn.c gates.c matrix.c \
 	 specrand.c
 
 CC=icc
-CFLAGS=-O3
+CFLAGS=-O2
 COMP_FLAGS=-lm -DSPEC_CPU -DNDEBUG -DSPEC_CPU_LINUX
 
 all: $(SOURCES)

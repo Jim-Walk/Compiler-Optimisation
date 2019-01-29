@@ -61,7 +61,7 @@ VERBOSE = -DVERBOSE
 # GNU gcc
 #
 CC=icc
-CFLAGS = -O3 $(USE_DISP) $(USE_SHMEM) $(INCLUDEDIR) $(TRACE) $(VERBOSE) $(VERIFY) $(WARNINGS)
+CFLAGS = -O2 $(USE_DISP) $(USE_SHMEM) $(INCLUDEDIR) $(TRACE) $(VERBOSE) $(VERIFY) $(WARNINGS)
 
 OBJ = mpeg2dec.o getpic.o motion.o getvlc.o gethdr.o getblk.o getbits.o store.o recon.o spatscal.o idct.o idctref.o display.o systems.o subspic.o verify.o
 

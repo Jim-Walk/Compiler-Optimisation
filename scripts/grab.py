@@ -29,6 +29,6 @@ for folder in os.listdir():
                 lines = f.readlines()
                 times += parse_time(lines[-3])
 
-        dg = Data_group.make_data_group(times//10, {'-03':True}, folder)
+        dg = Data_group.make_data_group(times//10, {'-O2':True}, folder)
         dg.save()
         print(" saved average")
