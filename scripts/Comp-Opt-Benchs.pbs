@@ -3,7 +3,7 @@
 # PBS job options (name, compute nodes, job time)
 #PBS -N Comp-Opt-icc
 #PBS -l select=16
-#PBS -l walltime=02:00:00
+#PBS -l walltime=00:45:00
 #PBS -A d167-s1893750
 #PBS -l place=excl
 
@@ -19,4 +19,4 @@ module load xextproto-7.3.0-intel-17.0.2-cdutu6k
 module load libxext-1.3.3-gcc-6.2.0-nmfoyir
 module load anaconda/python3
 
-./icc_gen.py
+./gen.py

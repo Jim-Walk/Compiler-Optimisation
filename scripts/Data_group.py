@@ -14,10 +14,18 @@ class Data_group():
     def __init__(self, benchmark):
         self.bench = benchmark
 
-    # save most recent runtime to history
+    # save most recent runtime to history, append
+    # average non zero value to end of list
     def save(self):
-        self.times += sum(self.times)//len(self.times)
-        self.history[self.get_flags()] = [times]
+        i = 0
+        sum_times = 0
+        for time in self.times:
+            if time != 0:
+                sum_times += times
+                i += 1
+
+        times = self.times sum_times//i
+        self.history[self.get_flags()] = times
 
     # Return a string of all activated flags
     def get_flags(self):
@@ -30,15 +38,20 @@ class Data_group():
     def add_times(self, res):
         self.times = res
 
-    def write_to_file(self):
-        with open(self.bench, 'w+') as f:
-            for flg in self.flags:
-                w_str = flg + self.flags[flg]
+    def write_to_file(self, path):
+        fpath = path + self.bench
+        with open(fpath, 'w+') as f:
+            f.write(self.bench)
+            f.write('\n')
+            for flg in self.history:
+                w_str = flg + ' ' + str(self.history[flg])
                 f.write(w_str)
                 f.write('\n')
 
     def emit_make(self):
-        make_cmd = 'make CC=icc CFLAGS=' + self.get_flags()
+        make_cmd = 'make CC=gcc CFLAGS=' + self.get_flags()
+        print(make_cmd)
+        os.system('make clean')
         os.system(make_cmd)
 
     def set_flags(self, flgs):

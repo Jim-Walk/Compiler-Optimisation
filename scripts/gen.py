@@ -10,7 +10,7 @@ from multiprocessing import Pool as ThreadPool
 from os import chdir, listdir, system
 from os.path import isfile
 import subprocess
-import grab
+import grab, Data_group
 
 def run_bench(cmd):
     system('chmod +x run.sh')
@@ -28,14 +28,15 @@ def main():
     for folder in listdir():
         if ( not isfile(folder)):
 
+            print('Entering ', folder)
+            chdir(folder)
             flags = [{'-O0':True},{'-O1':True},{'-O2':True},{'-O3':True}]
-            dg = make_data_group(folder)
+            dg = Data_group.make_data_group(folder)
 
             for flag in flags:
                 dg.set_flags(flag)
-                print('Entering ', folder)
-                chdir(folder + "/src")
 
+                chdir('src')
                 print('Compiling...')
                 dg.emit_make()
                 chdir('..')
@@ -48,14 +49,13 @@ def main():
                 pool.close()
                 pool.join()
 
-                print('Completed execution for ', folder)
+                print('Completed execution for ', flag)
                 dg.add_times(results)
                 dg.save()
                 results = []
-                chdir('..')
 
-        dg.write_to_file()
-
+            chdir('..')
+            dg.write_to_file('../results/gcc/')
 
     print('Done')
 
