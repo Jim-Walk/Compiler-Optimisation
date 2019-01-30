@@ -17,5 +17,6 @@ module load libx11-1.6.5-intel-17.0.2-i5l7o6h
 module load xproto-7.0.31-intel-17.0.2-5cn7qqr
 module load xextproto-7.3.0-intel-17.0.2-cdutu6k
 module load libxext-1.3.3-gcc-6.2.0-nmfoyir
+module load anaconda/python3
 
 ./icc_gen.py

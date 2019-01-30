@@ -1,31 +1,49 @@
 import uuid
+import os
 
 class Data_group():
-    avg = 0
+    # A list of all ten times, the 11th
+    # value is the average
+    times = []
+    # Dictionary of all flags, flags which are on are set to true
     flags = {}
+    # history contains dictionary record of active flags and their runtimes
+    history = {}
     bench = ""
-    num_flags = 0
 
-    def __init__(self, average, flegs, benchmark):
-        self.avg = average
-        self.flags = flegs
+    def __init__(self, benchmark):
         self.bench = benchmark
-        self.iden = uuid.uuid4()
-        for x in flegs:
-            if flegs[x]:
-                self.num_flags += 1
 
+    # save most recent runtime to history
     def save(self):
-        fname = str(self.num_flags) + "_" + self.bench + "." + str(self.iden) + ".final"
-        with open(fname, "w+") as f:
-            f.write(str(self.avg))
-            f.write('\n')
-            for flag in self.flags:
-                if self.flags[flag]:
-                    f.write(flag)
-                    f.write('\n')
+        self.times += sum(self.times)//len(self.times)
+        self.history[self.get_flags()] = [times]
 
-def make_data_group(avg, flags, bench):
-    dg = Data_group(avg, flags, bench)
+    # Return a string of all activated flags
+    def get_flags(self):
+        flg_str = ""
+        for flag in self.flags:
+            if self.flags[flag]:
+                flg_str += flag
+        return flg_str
+
+    def add_times(self, res):
+        self.times = res
+
+    def write_to_file(self):
+        with open(self.bench, 'w+') as f:
+            for flg in self.flags:
+                w_str = flg + self.flags[flg]
+                f.write(w_str)
+                f.write('\n')
+
+    def emit_make(self):
+        make_cmd = 'make CC=icc CFLAGS=' + self.get_flags()
+        os.system(make_cmd)
+
+    def set_flags(self, flgs):
+        self.flags = flgs
+
+def make_data_group(bench):
+    dg = Data_group(bench)
     return dg
-

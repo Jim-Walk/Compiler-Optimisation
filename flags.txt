@@ -1,5 +1,5 @@
 -faggressive-loop-optimizations 
--fassociative-math  -fauto-profile  -fauto-profile[=path] 
+-fassociative-math  -fauto-profile  
 -fauto-inc-dec  -fbranch-probabilities 
 -fbranch-target-load-optimize  -fbranch-target-load-optimize2 
 -fbtr-bb-exclusive  -fcaller-saves 
@@ -16,13 +16,12 @@
 -fgcse  -fgcse-after-reload  -fgcse-las  -fgcse-lm  -fgraphite-identity 
 -fgcse-sm  -fhoist-adjacent-loads  -fif-conversion 
 -fif-conversion2  -findirect-inlining 
--finline-functions  -finline-functions-called-once  -finline-limit=n 
+-finline-functions  -finline-functions-called-once 
 -finline-small-functions  -fipa-cp  -fipa-cp-clone 
 -fipa-bit-cp  -fipa-vrp  -fipa-pta  -fipa-profile  -fipa-pure-const 
 -fipa-reference  -fipa-reference-addressable 
--fipa-stack-alignment  -fipa-icf  -fira-algorithm=algorithm 
--flive-patching=level 
--fira-region=region  -fira-hoist-pressure 
+-fipa-stack-alignment  -fipa-icf  
+-fira-hoist-pressure 
 -fira-loop-pressure  -fno-ira-share-save-slots 
 -fno-ira-share-spill-slots 
 -fisolate-erroneous-paths-dereference  -fisolate-erroneous-paths-attribute 
@@ -41,18 +40,12 @@
 -fno-toplevel-reorder  -fno-trapping-math  -fno-zero-initialized-in-bss 
 -fomit-frame-pointer  -foptimize-sibling-calls 
 -fpartial-inlining  -fpeel-loops  -fpredictive-commoning 
--fprefetch-loop-arrays 
--fprofile-correction 
--fprofile-use  -fprofile-use=path  -fprofile-values 
--fprofile-reorder-functions 
 -freciprocal-math  -free  -frename-registers  -freorder-blocks 
--freorder-blocks-algorithm=algorithm 
 -freorder-blocks-and-partition  -freorder-functions 
 -frerun-cse-after-loop  -freschedule-modulo-scheduled-loops 
 -frounding-math  -fsave-optimization-record 
 -fsched2-use-superblocks  -fsched-pressure 
 -fsched-spec-load  -fsched-spec-load-dangerous 
--fsched-stalled-insns-dep[=n]  -fsched-stalled-insns[=n] 
 -fsched-group-heuristic  -fsched-critical-path-heuristic 
 -fsched-spec-insn-heuristic  -fsched-rank-heuristic 
 -fsched-last-insn-heuristic  -fsched-dep-count-heuristic 
@@ -74,7 +67,7 @@
 -ftree-phiprop  -ftree-loop-distribution  -ftree-loop-distribute-patterns 
 -ftree-loop-ivcanon  -ftree-loop-linear  -ftree-loop-optimize 
 -ftree-loop-vectorize 
--ftree-parallelize-loops=n  -ftree-pre  -ftree-partial-pre  -ftree-pta 
+-ftree-parallelize-loops=2  -ftree-pre  -ftree-partial-pre  -ftree-pta 
 -ftree-reassoc  -ftree-scev-cprop  -ftree-sink  -ftree-slsr  -ftree-sra 
 -ftree-switch-conversion  -ftree-tail-merge 
 -ftree-ter  -ftree-vectorize  -ftree-vrp  -funconstrained-commons 
@@ -82,5 +75,4 @@
 -funsafe-math-optimizations  -funswitch-loops 
 -fipa-ra  -fvariable-expansion-in-unroller  -fvect-cost-model  -fvpt 
 -fweb  -fwhole-program  -fwpa  -fuse-linker-plugin 
---param name=value
 -O  -O0  -O1  -O2  -O3  -Os  -Ofast  -Og
