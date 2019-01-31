@@ -3,28 +3,35 @@
 """
 This script compiles a benchmarks, with -O3. After
 compiling each benchmark, they are ran in parallel
-to save time. Output is stored in 10 .dat files
+to save time. 
 """
 
 from multiprocessing import Pool as ThreadPool
 from os import chdir, listdir, system
 from os.path import isfile
-import subprocess
-import grab, Data_group
+import subprocess, time
+from supbrocess import Popen, PIPE, STDOUT, TimeoutExpired
+import Data_group
 
-def run_bench(cmd):
+def run_bench():
     system('chmod +x run.sh')
-    res = subprocess.run(['time', './run.sh'], stderr=subprocess.STDOUT,
-                         stdout=subprocess.PIPE)
+    start_time = time.time()
+    with Popen(benchrun, shell=True, stderr=STDOUT, stdout=PIPE,
+               preexec_fn=os.setsid) as process:
+        try:
+            output = process.communicate(timeout=600)[0]
+        except TimeoutExpired:
+            os.killpg(process.pid, signal.SIGINT)
+            output = process.communicate()[0]
+
+    end_time = time.time()
+    ellapsed_time = int( (end_time-start_time)*1000)
     res_str = res.stdout.decode('utf-8')
-    ans = res_str.split('\n')[-3].strip()
-    ans = ans.split()[0]
-    return grab.parse_time(ans)
+    return ellapsed_time
 
 def main():
 
     chdir('../coptbenchmarks2013')
-    my_array = list(range(1,11))
     for folder in listdir():
         if ( not isfile(folder)):
 
@@ -39,13 +46,16 @@ def main():
                 chdir('src')
                 print('Compiling...')
                 dg.emit_make()
+                #
+                #   if emit_make fails then we need to fail here gracefully
+                #
                 chdir('..')
 
                 # Now we must run the benchmark, in parallel to save time
 
                 pool = ThreadPool(processes=10)
 
-                results = pool.map(run_bench, my_array)
+                results = pool.map(run_bench)
                 pool.close()
                 pool.join()
 

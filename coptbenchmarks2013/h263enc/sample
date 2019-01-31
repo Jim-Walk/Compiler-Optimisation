@@ -1,0 +1,299 @@
+Coding...
+
+TMN (H.263) coder version 1.7, Copyright (C) 1995, 1996 Telenor R&D.
+TMN comes with ABSOLUTELY NO WARRANTY; This is free software, and 
+you are welcome to redistribute it under certain conditions; 
+See accompanying COPYING file for details.
+
+Encoding format: 4CIF (704x576)
+Encoding frame rate  : variable
+Reference frame rate : 30.00
+Orig. seq. frame rate: 30.00
+
+Reading image no: 0
+Finished INTRA
+SNR_Y  : 38.05
+SNR_Cb : 43.36
+SNR_Cr : 44.86
+--------------
+# intra   : 1584
+# inter   : 0
+# inter4v : 0
+--------------
+Coeff_Y: 119058
+Coeff_C: 27696
+Vectors: 0
+CBPY   : 5630
+MCBPC  : 2020
+MODB   : 0
+CBPB   : 0
+COD    : 0
+DQUANT : 0
+header : 52
+==============
+Total  : 154456
+
+Reading image no: 1
+Coding P frame 1... Global adj = 0.00
+meanQP = 10.00   newQP = 10
+Target no. of bits: 116933.34
+done
+Inter QP: 10
+Results for P-frame:
+SNR_Y  : 38.05
+SNR_Cb : 43.58
+SNR_Cr : 44.91
+--------------
+# intra   : 17
+# inter   : 1126
+# inter4v : 0
+--------------
+Coeff_Y: 15918
+Coeff_C: 642
+Vectors: 9678
+CBPY   : 3331
+MCBPC  : 1353
+MODB   : 0
+CBPB   : 0
+COD    : 1584
+DQUANT : 6
+header : 56
+==============
+Total  : 32568
+
+Reading image no: 2
+Reading image no: 3
+Chose PP  - bsad 1215837, psad 944724
+Coding P frame 2... Global adj = -0.36
+meanQP = 8.56   newQP = 5
+Target no. of bits: 116933.34
+done
+Inter QP: 10
+Results for P-frame:
+SNR_Y  : 40.15
+SNR_Cb : 44.76
+SNR_Cr : 45.90
+--------------
+# intra   : 29
+# inter   : 1330
+# inter4v : 0
+--------------
+Coeff_Y: 58020
+Coeff_C: 3979
+Vectors: 9638
+CBPY   : 5439
+MCBPC  : 2595
+MODB   : 0
+CBPB   : 0
+COD    : 1584
+DQUANT : 2
+header : 55
+==============
+Total  : 81312
+
+Reading image no: 3
+Coding P frame 3... Global adj = -0.15
+meanQP = 4.97   newQP = 4
+Target no. of bits: 116933.34
+done
+Inter QP: 5
+Results for P-frame:
+SNR_Y  : 41.40
+SNR_Cb : 45.85
+SNR_Cr : 46.58
+--------------
+# intra   : 36
+# inter   : 1361
+# inter4v : 0
+--------------
+Coeff_Y: 68955
+Coeff_C: 4070
+Vectors: 10017
+CBPY   : 5539
+MCBPC  : 2808
+MODB   : 0
+CBPB   : 0
+COD    : 1584
+DQUANT : 0
+header : 51
+==============
+Total  : 93024
+
+Reading image no: 4
+Reading image no: 5
+Chose PP  - bsad 1195879, psad 1015217
+Coding P frame 4... Global adj = -0.10
+meanQP = 4.00   newQP = 4
+Target no. of bits: 116933.34
+done
+Inter QP: 4
+Results for P-frame:
+SNR_Y  : 41.77
+SNR_Cb : 46.32
+SNR_Cr : 47.14
+--------------
+# intra   : 39
+# inter   : 1416
+# inter4v : 0
+--------------
+Coeff_Y: 82948
+Coeff_C: 5476
+Vectors: 11015
+CBPY   : 5625
+MCBPC  : 3090
+MODB   : 0
+CBPB   : 0
+COD    : 1584
+DQUANT : 22
+header : 56
+==============
+Total  : 109816
+
+Reading image no: 5
+Coding P frame 5... Global adj = -0.03
+meanQP = 3.75   newQP = 4
+Target no. of bits: 116933.34
+done
+Inter QP: 4
+Results for P-frame:
+SNR_Y  : 41.19
+SNR_Cb : 46.02
+SNR_Cr : 46.78
+--------------
+# intra   : 18
+# inter   : 1260
+# inter4v : 0
+--------------
+Coeff_Y: 84497
+Coeff_C: 3831
+Vectors: 8745
+CBPY   : 5223
+MCBPC  : 2341
+MODB   : 0
+CBPB   : 0
+COD    : 1584
+DQUANT : 4
+header : 55
+==============
+Total  : 106280
+
+Reading image no: 6
+Reading image no: 7
+Chose PP  - bsad 1874173, psad 943345
+Coding P frame 6... Global adj = -0.05
+meanQP = 3.92   newQP = 4
+Target no. of bits: 116933.34
+done
+Inter QP: 4
+Results for P-frame:
+SNR_Y  : 41.33
+SNR_Cb : 46.02
+SNR_Cr : 46.81
+--------------
+# intra   : 36
+# inter   : 1360
+# inter4v : 0
+--------------
+Coeff_Y: 74462
+Coeff_C: 5496
+Vectors: 10603
+CBPY   : 5258
+MCBPC  : 2772
+MODB   : 0
+CBPB   : 0
+COD    : 1584
+DQUANT : 18
+header : 55
+==============
+Total  : 100248
+
+Reading image no: 7
+Coding P frame 7... Global adj = -0.07
+meanQP = 3.83   newQP = 4
+Target no. of bits: 116933.34
+done
+Inter QP: 4
+Results for P-frame:
+SNR_Y  : 42.07
+SNR_Cb : 46.50
+SNR_Cr : 47.11
+--------------
+# intra   : 26
+# inter   : 1417
+# inter4v : 0
+--------------
+Coeff_Y: 85159
+Coeff_C: 6033
+Vectors: 10631
+CBPY   : 5778
+MCBPC  : 3182
+MODB   : 0
+CBPB   : 0
+COD    : 1584
+DQUANT : 38
+header : 51
+==============
+Total  : 112456
+
+Reading image no: 8
+Reading image no: 8
+Coding P frame 8... Global adj = -0.02
+meanQP = 3.44   newQP = 3
+Target no. of bits: 116933.34
+done
+Inter QP: 4
+Results for P-frame:
+SNR_Y  : 42.94
+SNR_Cb : 47.08
+SNR_Cr : 47.69
+--------------
+# intra   : 39
+# inter   : 1437
+# inter4v : 0
+--------------
+Coeff_Y: 95583
+Coeff_C: 7755
+Vectors: 7401
+CBPY   : 6189
+MCBPC  : 3622
+MODB   : 0
+CBPB   : 0
+COD    : 1584
+DQUANT : 0
+header : 50
+==============
+Total  : 122184
+
+
+==== TOTAL ====
+for 8 images of input_base_4CIF_0to8.yuv
+--------------
+SNR for 8 P-frames:
+SNR_Y  : 41.11
+SNR_Cb : 45.77
+SNR_Cr : 46.62
+--------------
+# intra   : 30
+# inter   : 1338
+# inter4v : 0
+--------------
+Coeff_Y: 70692
+Coeff_C: 4660
+Vectors: 9716
+CBPY   : 5297
+MCBPC  : 2720
+MODB   : 0
+CBPB   : 0
+COD    : 1584
+DQUANT : 11
+header : 53
+==============
+Total  : 94736
+
+Original seq time: 0.30 (0.27) sec
+Mean quantizer   : 4.43
+Encoded frames   :   9 (  8)
+Mean frame rate  : 30.00 Hz
+Target bit rate  : 3508.00 kbit/sec
+Obtained bit rate: 3041.15 (2842.08) kbit/sec
+============================================
