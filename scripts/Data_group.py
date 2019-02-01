@@ -1,5 +1,5 @@
-import uuid
 import os
+import sys
 
 class Data_group():
     # A list of all ten times, the 11th
@@ -17,14 +17,7 @@ class Data_group():
     # save most recent runtime to history, append
     # average non zero value to end of list
     def save(self):
-        i = 0
-        sum_times = 0
-        for time in self.times:
-            if time != 0:
-                sum_times += times
-                i += 1
-
-        times = self.times sum_times//i
+        times = sum(self.times)//len(self.times)
         self.history[self.get_flags()] = times
 
     # Return a string of all activated flags
@@ -50,9 +43,28 @@ class Data_group():
 
     def emit_make(self):
         make_cmd = 'make CC=gcc CFLAGS=' + self.get_flags()
-        print(make_cmd)
-        os.system('make clean')
-        os.system(make_cmd)
+        self.emit_clean()
+        with Popen('./run.sh', shell=True, stderr=STDOUT, stdout=PIPE,
+                   preexec_fn=os.setsid) as process:
+            try:
+                output = process.communicate(timeout=600)[0]
+                return True
+            except TimeoutExpired:
+                os.killpg(process.pid, signal.SIGINT)
+                output = process.communicate()[0]
+                return False
+
+    def emit_clean(self):
+        with Popen('make clean', shell=True, stderr=STDOUT, stdout=PIPE,
+                   preexec_fn=os.setsid) as process:
+            try:
+                output = process.communicate(timeout=600)[0]
+            except TimeoutExpired as e:
+                os.killpg(process.pid, signal.SIGINT)
+                print("CATASTROPHIC ERROR - UNABLE TO CLEAN", file=sys.stderr)
+                print(e, file=sys.stderr)
+                output = process.communicate()[0]
+                exit()
 
     def set_flags(self, flgs):
         self.flags = flgs

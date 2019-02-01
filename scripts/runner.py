@@ -17,8 +17,8 @@ class Runner():
 
     def check_correctness(output):
         with open('sample', 'r') as f:
-            if f.read() == output:
-
+             boolean = levin-dist(f.read(), output)
+        return boolean
 
     def gen_sample(bench):
         os.chdir(bench)

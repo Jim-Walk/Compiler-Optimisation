@@ -3,7 +3,7 @@
 """
 This script compiles a benchmarks, with -O3. After
 compiling each benchmark, they are ran in parallel
-to save time. 
+to save time.
 """
 
 from multiprocessing import Pool as ThreadPool
@@ -20,11 +20,12 @@ def run_bench():
                preexec_fn=os.setsid) as process:
         try:
             output = process.communicate(timeout=600)[0]
+            end_time = time.time()
         except TimeoutExpired:
             os.killpg(process.pid, signal.SIGINT)
             output = process.communicate()[0]
+            end_time = time.time()
 
-    end_time = time.time()
     ellapsed_time = int( (end_time-start_time)*1000)
     res_str = res.stdout.decode('utf-8')
     return ellapsed_time
@@ -42,29 +43,26 @@ def main():
 
             for flag in flags:
                 dg.set_flags(flag)
+                results = None
 
                 chdir('src')
                 print('Compiling...')
-                dg.emit_make()
-                #
-                #   if emit_make fails then we need to fail here gracefully
-                #
-                chdir('..')
+                if dg.emit_make():
+                    chdir('..')
 
-                # Now we must run the benchmark, in parallel to save time
+                    # Now we must run the benchmark, in parallel to save time
 
-                pool = ThreadPool(processes=10)
+                    pool = ThreadPool(processes=10)
 
-                results = pool.map(run_bench)
-                pool.close()
-                pool.join()
+                    results = pool.map(run_bench)
+                    pool.close()
+                    pool.join()
 
-                print('Completed execution for ', flag)
-                dg.add_times(results)
-                dg.save()
-                results = []
-
-            chdir('..')
+                    print('Completed execution for ', flag)
+                    dg.add_times(results)
+                    dg.save()
+                else:
+                    chdir('..')
             dg.write_to_file('../results/gcc/')
 
     print('Done')
