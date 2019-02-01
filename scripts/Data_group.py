@@ -1,5 +1,6 @@
 import os
 import sys
+from subprocess import Popen, PIPE, STDOUT, TimeoutExpired
 
 class Data_group():
     # A list of all ten times, the 11th
@@ -17,8 +18,8 @@ class Data_group():
     # save most recent runtime to history, append
     # average non zero value to end of list
     def save(self):
-        times = sum(self.times)//len(self.times)
-        self.history[self.get_flags()] = times
+        avg = sum(self.times)//len(self.times)
+        self.history[self.get_flags()] = self.times + [avg]
 
     # Return a string of all activated flags
     def get_flags(self):
