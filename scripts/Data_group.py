@@ -9,8 +9,8 @@ class Data_group():
     # Dictionary of all flags, flags which are on are set to true
     flags = {}
     # history contains dictionary record of active flags and their runtimes
-    history = {}
     bench = ""
+    fitness = 0
 
     def __init__(self, benchmark):
         self.bench = benchmark
@@ -26,11 +26,24 @@ class Data_group():
         flg_str = ""
         for flag in self.flags:
             if self.flags[flag]:
-                flg_str += flag
+                flg_str += (flag + " ")
         return flg_str
+
+    def set_flags(self, flgs):
+        self.flags = flgs
 
     def add_times(self, res):
         self.times = res
+        avg = sum(self.times)//len(self.times)
+        self.times += [avg]
+
+    # Calculate fitness after saving run time
+    # return inverse average time as we want better 
+    # solutions to have higher fitness
+    def calc_fitnesss(self):
+        avg = self.times[-1]
+        self.fitness = helpers.change_range(avg, 
+
 
     def write_to_file(self, path):
         fpath = path + self.bench
@@ -67,8 +80,6 @@ class Data_group():
                 output = process.communicate()[0]
                 exit()
 
-    def set_flags(self, flgs):
-        self.flags = flgs
 
 def make_data_group(bench):
     dg = Data_group(bench)

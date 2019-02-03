@@ -14,7 +14,7 @@ import shutil, os
 import subprocess, time
 from subprocess import Popen, PIPE, STDOUT, TimeoutExpired
 from itertools import repeat
-import Data_group, helpers
+import Data_group, helpers, Population
 
 # Run the bench mark in process's folder
 # check that it matches well enough
@@ -37,7 +37,7 @@ def run_bench(folder, sample):
 
     ellapsed_time = int( (end_time-start_time)*1000)
     if run_err:
-        ellapsed_time *= 1000
+        ellapsed_time *= 100
 
     chdir('..')
     return ellapsed_time
@@ -52,47 +52,49 @@ def main():
             chdir(folder)
             with open('sample', 'r') as sample_f:
                 sample = sample_f.read()
-                #flags = [{'-O0':True},{'-O1':True},{'-O2':True},{'-O3':True}]
-                flags = [{'-O3':True}]
-                dg = Data_group.make_data_group(folder)
+                population = Population.create(4, folder)
+                count = 0; MAX_ITER = 3
+                while count < MAX_ITER:
 
-                for flag in flags:
-                    dg.set_flags(flag)
-                    results = None
+                    for i in list(range(0, population.pop_size)):
+                        results = []
+                        chdir('src')
+                        print('Compiling...', end='')
+                        if population.live_pool[i].emit_make():
+                            chdir('../..')   # now in coptbenchmark2013 root folder
+                            print("done!")
 
-                    chdir('src')
-                    print('Compiling...')
-                    if dg.emit_make():
-                        chdir('../..')   # now in coptbenchmark2013 root folder
-                        process_folders = [folder + "_" + str(x) for x in
-                                           range(0,10)]
-                        for proc_folder in process_folders:
-                            shutil.copytree(folder, proc_folder)
+                            # Now we run the benchmark in parallel to save time
+                            process_folders = [folder + "_" + str(x) for x in
+                                               range(0,10)]
+                            for proc_folder in process_folders:
+                                shutil.copytree(folder, proc_folder)
 
-                        # Now we must run the benchmark, in parallel to save time
+                            pool = ThreadPool(processes=10)
+                            results = pool.starmap(run_bench, zip(process_folders,
+                                                              repeat(sample)))
+                            pool.close()
+                            pool.join()
 
-                        pool = ThreadPool(processes=10)
+                            print('Completed execution for group', i)
+                            print(results)
+                            # Clean up folders
+                            for proc_folder in process_folders:
+                                shutil.rmtree(proc_folder)
+                            population.live_pool[i].add_times(results)
+                            chdir(folder)
+                        else:
+                            chdir('..')
+                            print("failed")
 
-                        results = pool.starmap(run_bench, zip(process_folders,
-                                                          repeat(sample)))
-                        pool.close()
-                        pool.join()
-
-                        print('Completed execution for ', flag)
-                        print(results)
-                        # Clean up folders
-                        for proc_folder in process_folders:
-                            shutil.rmtree(proc_folder)
-                        dg.add_times(results)
-                        dg.save()
-                        chdir(folder)
-                    else:
-                        chdir('..')
+                    population.evaluate()
+                    population.selection()
+                    count = count + 1
                 chdir('..')
-                dg.write_to_file('../results/gcc/')
+                population.write_to_file('../results/gcc/')
                 break
 
-        print('Done')
+        print('program compleated')
 
 
 main()

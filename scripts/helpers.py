@@ -1,3 +1,5 @@
+import random
+
 # Contains misc helper methods
 
 # Compares two strings, returns true if 60% of the lines
@@ -19,11 +21,19 @@ def compare(str1, str2):
 # returns a dictionary of all flags, with a random
 # boolean to indicate if they are on or not
 def read_flags(path):
-    flg_dict = {}
     with open(path, 'r') as flg_f:
         flgs = flg_f.read()
-        flgs = flgs.split()
-        for flg in flgs:
-            flg_dict[flg] = random.random() > 0.5
+        return flgs.split()
+
+# Returns random true false dict of flags
+# from given list of flags
+def random_flags(flgs):
+    flg_dict = {}
+    for flg in flgs:
+        flg_dict[flg] = random.random() > 0.5
 
     return flg_dict
+
+def change_range(n, start1, stop1, start2, stop2):
+    val =  ((n-start1) / (stop1-start1)) * (stop2-start2) + start2
+    return val
