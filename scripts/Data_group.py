@@ -40,9 +40,8 @@ class Data_group():
     # Calculate fitness after saving run time
     # return inverse average time as we want better 
     # solutions to have higher fitness
-    def calc_fitnesss(self):
-        avg = self.times[-1]
-        self.fitness = helpers.change_range(avg, 
+    def set_fitnesss(self, fit):
+        self.fitness = fit
 
 
     def write_to_file(self, path):

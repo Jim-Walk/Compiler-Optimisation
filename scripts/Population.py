@@ -14,28 +14,33 @@ class Population():
         i = 0
         flgs = helpers.read_flags('../../flags.txt')
         for i in list(range(0,self.pop_size)):
-            self.live_pool += [Data_group.make_data_group(self.bench)]
+            self.live_pool.append( [Data_group.make_data_group(self.bench)] )
             self.live_pool[i].set_flags(helpers.random_flags(flgs))
+
+
+    def calc_fitnesss(self):
+        max_time, min_time = 0, 0
+
+        for i in list(range(0,self.pop_size)):
+            if max_time < self.live_pool[i].times[-1]:
+                max_time = self.live_pool[i].times[-1]
+            if min_time >  self.live_pool[i].times[-1]:
+                min_time = self.live_pool[i].times[-1]
+
+        # Those which are faster have a higher fitness
+        for i in list(range(0,self.pop_size)):
+            self.live_pool[i].set_fitnesss( helpers.change_range( self.live_pool[i].times[-1],
+                                                                  min_time, max_time,
+                                                                  100, 1 ) )
 
     # Creates mating pool
     def evaluate(self):
-        maxfit = 0
-        i = 0
-        # find max fitness
-        for i in list(range(0,self.pop_size)):
-            self.live_pool[i].calc_fitnesss()
-            if self.live_pool[i].fitness > maxfit:
-                maxfit = self.live_pool[i].fitness
-
-        # Normalise
-        for i in list(range(0,self.pop_size)):
-            self.live_pool[i].fitness /= maxfit
-
+        self.calc_fitnesss()
         self.mating_pool = []
         for i in list(range(0, self.pop_size)):
             j = 0; max_j = self.live_pool[i].fitness
             while j < max_j:
-                self.mating_pool += [self.live_pool[i]]
+                self.mating_pool.append(self.live_pool[i])
                 j += 1
 
     def save(self):
