@@ -1,0 +1,28 @@
+\begin{thebibliography}{1}
+
+\bibitem{agakov2006using}
+Felix Agakov, Edwin Bonilla, John Cavazos, Bj{\"o}rn Franke, Grigori Fursin,
+  Michael~FP O'Boyle, John Thomson, Marc Toussaint, and Christopher~KI
+  Williams.
+\newblock Using machine learning to focus iterative optimization.
+\newblock In {\em Proceedings of the International Symposium on Code Generation
+  and Optimization}, pages 295--305. IEEE Computer Society, 2006.
+
+\bibitem{fursin2008milepost}
+Grigori Fursin, Cupertino Miranda, Olivier Temam, Mircea Namolaru, Elad
+  Yom-Tov, Ayal Zaks, Bilha Mendelson, Edwin Bonilla, John Thomson, Hugh
+  Leather, et~al.
+\newblock Milepost gcc: machine learning based research compiler.
+\newblock In {\em GCC summit}, 2008.
+
+\bibitem{Shiffman16}
+Daniel Shiffman.
+\newblock Coding challenge 29: Smart rockets in p5.js.
+\newblock \url{https://youtu.be/bGz7mv2vD6g}, 2016.
+
+\bibitem{wang2018machine}
+Zheng Wang and Michael O'Boyle.
+\newblock Machine learning in compiler optimization.
+\newblock {\em Proceedings of the IEEE}, (99):1--23, 2018.
+
+\end{thebibliography}
