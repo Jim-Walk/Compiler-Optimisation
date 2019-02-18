@@ -3,7 +3,7 @@
 # PBS job options (name, compute nodes, job time)
 #PBS -N Comp_opt_gen_benchs
 #PBS -l select=16
-#PBS -l walltime=10:00:00
+#PBS -l walltime=20:00:00
 #PBS -A d167-s1893750
 #PBS -l place=excl
 

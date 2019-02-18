@@ -44,23 +44,23 @@ def run_bench(folder, sample):
 def main():
 
     chdir('../coptbenchmarks2013')
-    for folder in listdir():
-        if ( not isfile(folder)):
+    count = 0; MAX_ITER = 21
+    while count < MAX_ITER:
+        fail_count = 0
+        population = Population.create(15, "all")
+        for folder in listdir():
+            if ( not isfile(folder)):
 
-            print('Entering ', folder)
-            chdir(folder)
-            with open('sample', 'r') as sample_f:
-                sample = sample_f.read()
-                population = Population.create(15, folder)
-                count = 0; MAX_ITER = 25
-                while count < MAX_ITER:
-                    fail_count = 0
+                print('Entering ', folder)
+                chdir(folder)
+                with open('sample', 'r') as sample_f:
+                    sample = sample_f.read()
                     for i in list(range(0, population.pop_size)):
                         results = []
                         chdir('src')
                         if population.live_pool[i].emit_make():
                             chdir('../..')   # now in coptbenchmark2013 root folder
-                            proc_num = 10
+                            proc_num = 3
 
                             # Now we run the benchmark in parallel to save time
                             process_folders = [folder + "_" + str(x) for x in
@@ -87,25 +87,25 @@ def main():
                             fail_count = fail_count + 1
                             # print("failed")
 
-
-                    if (count % 5 == 0):
-                        s = 0
-                        for datum in population.live_pool:
-                            if len(datum.times) != 0:
-                                s += datum.times[-1]
-                        s //= population.pop_size
-
-                    population.evaluate()
-                    population.selection()
-
-                    if (count % 5 == 0):
-                        print('Iteration %d, failed compiles %d, history length %d' % (count, fail_count,len(population.history)))
-                        print('Population average time: %d' % (s))
-
-
-                    count = count + 1
                 chdir('..')
-                population.write_to_file('../results/gcc/')
+
+        if (count % 5 == 0):
+            s = 0
+            for datum in population.live_pool:
+                if len(datum.times) != 0:
+                    s += datum.times[-1]
+            s //= population.pop_size
+
+        population.evaluate()
+        population.selection()
+
+        if (count % 5 == 0):
+            print('Iteration %d, failed compiles %d, history length %d' % (count, fail_count,len(population.history)))
+            print('Population average time: %d' % (s))
+
+        count = count + 1
+
+    population.write_to_file('../results/gcc/')
 
     print('program completed')
 

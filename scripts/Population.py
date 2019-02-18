@@ -12,7 +12,7 @@ class Population():
         self.pop_size = size
         self.bench = benchmark
         i = 0
-        flgs = helpers.read_flags('../../flags.txt')
+        flgs = helpers.read_flags('../flags.txt')
         for i in list(range(0,self.pop_size)):
             self.live_pool.append( Data_group.make_data_group(self.bench) )
             self.live_pool[i].set_flags(helpers.random_flags(flgs))
