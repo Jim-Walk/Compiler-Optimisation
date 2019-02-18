@@ -1,0 +1,157 @@
+Entering  401.bzip2_2
+Iteration 0, failed compiles 11, history length 15
+Population average time: 7334501
+Iteration 5, failed compiles 1, history length 90
+Population average time: 670767
+Iteration 10, failed compiles 0, history length 165
+Population average time: 4291
+Iteration 15, failed compiles 5, history length 240
+Population average time: 3336272
+Iteration 20, failed compiles 0, history length 315
+Population average time: 4458
+Entering  mpeg2enc
+Iteration 0, failed compiles 11, history length 15
+Population average time: 7334105
+Iteration 5, failed compiles 3, history length 90
+Population average time: 2003193
+Iteration 10, failed compiles 8, history length 165
+Population average time: 5335240
+Iteration 15, failed compiles 1, history length 240
+Population average time: 669657
+Iteration 20, failed compiles 2, history length 315
+Population average time: 1335772
+Entering  458.sjeng
+Iteration 0, failed compiles 14, history length 15
+Population average time: 9333616
+Iteration 5, failed compiles 4, history length 90
+Population average time: 2669302
+Iteration 10, failed compiles 1, history length 165
+Population average time: 670363
+Iteration 15, failed compiles 2, history length 240
+Population average time: 1336753
+Iteration 20, failed compiles 2, history length 315
+Population average time: 1336719
+Entering  h263enc
+Iteration 0, failed compiles 10, history length 15
+Population average time: 6667498
+Iteration 5, failed compiles 4, history length 90
+Population average time: 2668592
+Iteration 10, failed compiles 3, history length 165
+Population average time: 2002095
+Iteration 15, failed compiles 4, history length 240
+Population average time: 2668346
+Iteration 20, failed compiles 1, history length 315
+Population average time: 668783
+Entering  h263dec
+Iteration 0, failed compiles 10, history length 15
+Population average time: 6666706
+Iteration 5, failed compiles 2, history length 90
+Population average time: 1333441
+Iteration 10, failed compiles 3, history length 165
+Population average time: 2000123
+Iteration 15, failed compiles 2, history length 240
+Population average time: 1333460
+Iteration 20, failed compiles 3, history length 315
+Population average time: 2000100
+Entering  401.bzip2_1
+Entering  470.lbm
+Iteration 0, failed compiles 12, history length 15
+Population average time: 8001207
+Iteration 5, failed compiles 1, history length 90
+Population average time: 670277
+Iteration 10, failed compiles 0, history length 165
+Population average time: 7978
+Iteration 15, failed compiles 0, history length 240
+Population average time: 6958
+Iteration 20, failed compiles 2, history length 315
+Population average time: 1339081
+Entering  464.h264ref
+Iteration 0, failed compiles 11, history length 15
+Population average time: 7337058
+Iteration 5, failed compiles 1, history length 90
+Population average time: 680161
+Iteration 10, failed compiles 0, history length 165
+Population average time: 12271
+Iteration 15, failed compiles 1, history length 240
+Population average time: 678273
+Iteration 20, failed compiles 1, history length 315
+Population average time: 678412
+Entering  456.hmmer
+Iteration 0, failed compiles 11, history length 15
+Population average time: 7334152
+Iteration 5, failed compiles 1, history length 90
+Population average time: 668950
+Iteration 10, failed compiles 1, history length 165
+Population average time: 668913
+Iteration 15, failed compiles 4, history length 240
+Population average time: 2668445
+Iteration 20, failed compiles 3, history length 315
+Population average time: 2002299
+Entering  462.libquantum
+Iteration 0, failed compiles 9, history length 15
+Population average time: 6000650
+Iteration 5, failed compiles 3, history length 90
+Population average time: 2000964
+Iteration 10, failed compiles 2, history length 165
+Population average time: 1334443
+Iteration 15, failed compiles 0, history length 240
+Population average time: 1271
+Iteration 20, failed compiles 0, history length 315
+Population average time: 1188
+Entering  445.gobmk
+Iteration 0, failed compiles 11, history length 15
+Population average time: 7338545
+Iteration 5, failed compiles 1, history length 90
+Population average time: 683547
+Entering  445.gobmk
+Iteration 0, failed compiles 14, history length 15
+Population average time: 9334623
+Iteration 5, failed compiles 3, history length 90
+Population average time: 2015563
+Iteration 10, failed compiles 2, history length 165
+Population average time: 1350723
+Iteration 15, failed compiles 2, history length 240
+Population average time: 1350307
+Iteration 20, failed compiles 3, history length 315
+Population average time: 2017129
+Entering  mpeg2dec
+Iteration 0, failed compiles 10, history length 15
+Population average time: 6666740
+Iteration 5, failed compiles 2, history length 90
+Population average time: 1333525
+Iteration 10, failed compiles 1, history length 165
+Population average time: 666875
+Iteration 15, failed compiles 3, history length 240
+Population average time: 2000182
+Iteration 20, failed compiles 1, history length 315
+Population average time: 666861
+Entering  429.mcf
+Iteration 0, failed compiles 10, history length 15
+Population average time: 6667650
+Iteration 5, failed compiles 2, history length 90
+Population average time: 1335795
+Iteration 10, failed compiles 1, history length 165
+Population average time: 669140
+Iteration 15, failed compiles 4, history length 240
+Population average time: 2668825
+Iteration 20, failed compiles 1, history length 315
+Population average time: 669428
+Entering  433.milc
+Iteration 0, failed compiles 11, history length 15
+Population average time: 7340742
+Iteration 5, failed compiles 3, history length 90
+Population average time: 2014178
+Iteration 10, failed compiles 2, history length 165
+Population average time: 1349401
+Entering  433.milc
+Iteration 0, failed compiles 9, history length 15
+Population average time: 6010413
+Iteration 5, failed compiles 2, history length 90
+Population average time: 1349409
+Iteration 10, failed compiles 2, history length 165
+Population average time: 1349867
+Iteration 15, failed compiles 1, history length 240
+Population average time: 686548
+Iteration 20, failed compiles 1, history length 315
+Population average time: 685616
+program completed
