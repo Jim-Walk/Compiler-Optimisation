@@ -1,0 +1,71 @@
+\documentclass[conference]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage{courier}
+\usepackage{fancyhdr}
+\usepackage{url}
+
+\pagestyle{fancy}
+\title{Compiler Optimisation using a Genetic Algorithm}
+\author{B138813}
+\date{February 2019}
+
+\begin{document}
+\lhead{Parallel Design Patterns I}
+\rhead{B138813}
+
+\IEEEtitleabstractindextext{%
+  \begin{abstract}
+      This paper presents, and evaluates a genetic algorithm for use in compiler optimisation, used on the GNU C compiler's front end.  We attempted to find configurations of the GNU C compiler (gcc) which would outperform the Intel C compiler (icc) on a variety of benchmarks, originating from SPEC CPU2006 and MediaBench v2 suites. We were ultimately unsuccseful.
+  \end{abstract}
+  \begin{IEEEkeywords}
+    Genetic Algorithm, Compiler Optimisation,  Compiler Flags, gcc, icc.
+  \end{IEEEkeywords}
+}
+
+
+\maketitle
+\IEEEdisplaynontitleabstractindextext
+
+\section{Introduction}
+A large amount of research has recently been carried out in examining the applicablilty of machine learning techniques to Compiler optimisation\cite{wang2018machine}\cite{fursin2008milepost}. Much of this work has been quite sophisiticated and complex, interacting which most parts of the compilation process. Inspired by this work, this paper sets out to find a simplistic genetic algorithm (GA) to find an optimal set of flags for a given benchmark, and the best set of flags for all benchmarks, in an attempt to beat -O3 optimisation.
+
+Whilst we are aware that work has already been done in using GAs for compiler optimisation\cite{agakov2006using}, our work pits the GNU C compiler against the Intel C compiler. We made this choice as we found icc to outperform gcc when both were set to optimisation level -O3. The intel compiler is also paid software, where as gcc is free.  We therefore thought it would be an a worthwhile challenge to ourselves to beat -O3 optimisation on icc, using gcc and our GA.
+
+\section{Evaluation Methodolgy}
+We first set about ensuring all our benchmarks would compile on the backend of our compute cluster through PBS scripts. Once we were satisfied, we began development of our Genetic Algorithm. We decided to use Python3, as it is a versitile scripting language with good support for running other programs, and receiving from the STDOUT stream. Although Python3 does lack somewhat in speed, it is inconsequential for our needs, as most of the program's execution time would be spent compiling and running the benchmarks.
+
+We decided to not use flags which could be expressed in a binary on/off format, like \texttt{-fsched-critical-path-heuristic} 
+
+Our algorithm was ported from a simple JavaScript implementation\cite{Shiffman16}, and then fine tuned to our needs. The purpose of the original GA was help rockets develop a path to a fixed point around an obstacle. In our GA, we attempted to find the quickest run time for our groupings of compiler flags.
+
+Each flag group in our population would run a the same benchmark 10 times, through use of the Python \texttt{subprocess} module, allowing the benchmarks to run in parallel. These subprocesses were required to run in their own directories, which were duplicates of the original, to ensure that they would not interfere with each others access to data folders. We would verify that each line of the programs output was correct, so that we did not accidently create performant but incorrect solutions. We carried out this verification with a naive line matching algorithm, which required only 60\% of the lines of a programs output to be identical. We made this choice of algorithm as it was quick to implement, and many of the benchmarks would simply print pre-defined strings.
+
+Once a certain flag group had been determined to succesfully complete, it's ten execution times were transformed into a mean.  We used this mean time to calculate the fitness of each flag groups, in which those that had a faster execution time were given a higher fitness. Fitness was defined as an integer value between 100 and 1.
+
+Flag groups were then placed into a mating pool, where the number of instances of a particular flag group in the mating pool was equal to that flag groups fitness value. We would then create a new population by randomly selecting two flag groups, and mixing their flag configurations. Flags configurations were represented by a dictionary of all possible flags, set to \texttt{True} or \texttt{False} depending if they were selected or not. Configurations were combined by selecting by giving the child configuration all of the flag settings from parent A up to a random point, and then giving the child all of the flag settings from parent B. The child flag group would then be placed into the population pool and we restart the process of evaluating the population.
+
+
+\section{Experimental Setup}
+This experiment was carried out on a back end node of Cirrus. Each node on Cirrus has two 2.1 GHz 18-core Intel Xeon E5-2695 processors\footnote{\url{https://cirrus.ac.uk/about/hardware.html}}.
+
+For the duration of the experiment run time, we had exlusive access to the back end node. The total runtime of the experiment was 23 hours and 51 minutes (wall time) to find the best flags for each benchmark, and TODO: TIME HERE for the best flags on average across all benchmarks. We used version 17.0.2 of the Intel Compiler, and version 6.2.0 of the GNU C compiler.  Benchmark execution time was measured using Python3's \texttt{time()} function around calls execution calls to the benchmark. We allowed for a complimation and execution time of ten minutes before terminating subprocesses. This choice was made to ensure our Genetic Algorithm did not break the compiler or compiled process in such a way that caused infite loops.
+\begin{itemize}
+  \item Population size of 15
+  \item Maximum number of iterations set to 25
+  \item Our actors, represnted by the \texttt{Data\_group.py}
+\end{itemize}
+
+\section{Results}
+Lots of tables here, if not figures. Will definitely need a good script for this.
+
+\section{Analysis}
+What do the results mean
+
+\section{Conclusion}
+God this was exhausting. It's only 25\%? That's mad.
+
+\bibliographystyle{plain}
+\bibliography{bib}
+
+\end{document}
+%
