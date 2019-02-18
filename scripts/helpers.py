@@ -10,7 +10,7 @@ def compare(str1, str2):
 
     i = 0
     j = 0
-    while i < len(arr_1):
+    while i < len(arr_1) and i < len(arr_2):
         if arr_1[i] == arr_2[i]:
             j = j + 1
         i = i + 1
