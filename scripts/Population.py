@@ -14,7 +14,7 @@ class Population():
         i = 0
         flgs = helpers.read_flags('../../flags.txt')
         for i in list(range(0,self.pop_size)):
-            self.live_pool.append( [Data_group.make_data_group(self.bench)] )
+            self.live_pool.append( Data_group.make_data_group(self.bench) )
             self.live_pool[i].set_flags(helpers.random_flags(flgs))
 
 
@@ -47,8 +47,6 @@ class Population():
         for i in list(range(0, self.pop_size)):
             if self.live_pool[i].get_flags() not in self.history:
                 self.history[self.live_pool[i].get_flags()] = self.live_pool[i].times
-            else:
-                print('Collision')
 
     def crossover(self, dg1, dg2):
         new_flags = {}
@@ -65,27 +63,35 @@ class Population():
     def selection(self):
         new_pool = []
         self.save()
-        print("history length: ", len(self.history))
         for i in list(range(0, self.pop_size)):
-             p1 = self.mating_pool[(random.randint(0, self.pop_size))].flags
-             p2 = self.mating_pool[(random.randint(0, self.pop_size))].flags
+             p1 = self.mating_pool[(random.randint(0, self.pop_size-1))].flags
+             p2 = self.mating_pool[(random.randint(0, self.pop_size-1))].flags
              child = self.crossover(p1, p2)
              d = Data_group.make_data_group(self.bench)
              d.set_flags(child)
+             d.mutate()
              new_pool.append(d)
 
         self.live_pool = new_pool
 
     def write_to_file(self, path):
         fpath = path + self.bench
+        best_time = 10000000000
         with open(fpath, 'w+') as f:
             f.write(self.bench)
             f.write('\n')
             for flg in self.history:
+                if len(self.history[flg]) > 0:
+                    if self.history[flg][-1] < best_time:
+                        best_time = self.history[flg][-1]
                 w_str = flg + ' ' + str(self.history[flg])
                 f.write(w_str)
                 f.write('\n')
+            w_str = 'The best time is ' + str(best_time)
+            f.write(w_str)
+            f.write('\n')
 
 def create(size, bench):
     pop = Population(size, bench)
+    pop.history = {}
     return pop

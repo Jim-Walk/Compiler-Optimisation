@@ -1,5 +1,5 @@
-import os
-import sys
+import os, sys
+import random
 from subprocess import Popen, PIPE, STDOUT, TimeoutExpired
 
 class Data_group():
@@ -43,25 +43,22 @@ class Data_group():
     def set_fitnesss(self, fit):
         self.fitness = fit
 
+    def mutate(self):
+        for flag in self.flags:
+            if random.random() < 0.05:
+                self.flags[flag] = not self.flags[flag]
 
-    def write_to_file(self, path):
-        fpath = path + self.bench
-        with open(fpath, 'w+') as f:
-            f.write(self.bench)
-            f.write('\n')
-            for flg in self.history:
-                w_str = flg + ' ' + str(self.history[flg])
-                f.write(w_str)
-                f.write('\n')
 
     def emit_make(self):
-        make_cmd = 'make CC=gcc CFLAGS=' + self.get_flags()
+        make_cmd = 'make CC=gcc CFLAGS=\"' + self.get_flags() +'\"'
         self.emit_clean()
-        with Popen('./run.sh', shell=True, stderr=STDOUT, stdout=PIPE,
+        with Popen(make_cmd, shell=True, stderr=STDOUT, stdout=PIPE,
                    preexec_fn=os.setsid) as process:
             try:
-                output = process.communicate(timeout=600)[0]
-                return True
+                output = process.communicate(timeout=300)[0]
+                # return true or false depending if compile was
+                # successful
+                return process.returncode == 0
             except TimeoutExpired:
                 os.killpg(process.pid, signal.SIGINT)
                 output = process.communicate()[0]

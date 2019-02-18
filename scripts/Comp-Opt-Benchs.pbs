@@ -1,9 +1,9 @@
 #!/bin/bash --login
 
 # PBS job options (name, compute nodes, job time)
-#PBS -N Comp-Opt-icc
+#PBS -N Comp_opt_gen_benchs
 #PBS -l select=16
-#PBS -l walltime=00:45:00
+#PBS -l walltime=10:00:00
 #PBS -A d167-s1893750
 #PBS -l place=excl
 
@@ -12,10 +12,11 @@
 cd /lustre/home/d167/s1893750/sem2/Compiler-Optimisation/scripts 
 
 module load intel-compilers-17/17.0.2.174
+module load gcc/6.2.0
 module load spack/cirrus
-module load libx11-1.6.5-intel-17.0.2-i5l7o6h
-module load xproto-7.0.31-intel-17.0.2-5cn7qqr
-module load xextproto-7.3.0-intel-17.0.2-cdutu6k
+module load libx11-1.6.3-gcc-6.2.0-d4nbrvu
+module load xproto-7.0.29-gcc-6.2.0-67kyux3
+module load xextproto-7.3.0-gcc-6.2.0-kho3sr7
 module load libxext-1.3.3-gcc-6.2.0-nmfoyir
 module load anaconda/python3
 

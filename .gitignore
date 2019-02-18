@@ -4,3 +4,5 @@
 *.o*
 *.raw
 *data*
+coptbenchmarks2013/*
+scripts/__pycache__/*

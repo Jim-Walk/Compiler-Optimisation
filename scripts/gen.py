@@ -1,7 +1,6 @@
-#!/usr/bin/python3
-
-"""
 #!/lustre/sw/anaconda/anaconda3-5.1.0/bin/python3
+"""
+#!/usr/bin/python3
 This script compiles a benchmarks, with -O3. After
 compiling each benchmark, they are ran in parallel
 to save time.
@@ -27,7 +26,7 @@ def run_bench(folder, sample):
         try:
             output = process.communicate(timeout=600)[0]
             end_time = time.time()
-            if not helpers.compare(sample, output.decode('utf-8')):
+            if not helpers.compare(sample, output.decode('utf-8')) or process.returncode != 0:
                 run_err = True
         except TimeoutExpired:
             os.killpg(process.pid, signal.SIGINT)
@@ -37,7 +36,7 @@ def run_bench(folder, sample):
 
     ellapsed_time = int( (end_time-start_time)*1000)
     if run_err:
-        ellapsed_time *= 100
+        ellapsed_time *= 1000
 
     chdir('..')
     return ellapsed_time
@@ -52,49 +51,63 @@ def main():
             chdir(folder)
             with open('sample', 'r') as sample_f:
                 sample = sample_f.read()
-                population = Population.create(4, folder)
-                count = 0; MAX_ITER = 3
+                population = Population.create(15, folder)
+                count = 0; MAX_ITER = 25
                 while count < MAX_ITER:
-
+                    fail_count = 0
                     for i in list(range(0, population.pop_size)):
                         results = []
                         chdir('src')
-                        print('Compiling...', end='')
                         if population.live_pool[i].emit_make():
                             chdir('../..')   # now in coptbenchmark2013 root folder
-                            print("done!")
+                            proc_num = 10
 
                             # Now we run the benchmark in parallel to save time
                             process_folders = [folder + "_" + str(x) for x in
-                                               range(0,10)]
+                                               range(0,proc_num)]
                             for proc_folder in process_folders:
                                 shutil.copytree(folder, proc_folder)
 
-                            pool = ThreadPool(processes=10)
+                            pool = ThreadPool(processes=proc_num)
                             results = pool.starmap(run_bench, zip(process_folders,
                                                               repeat(sample)))
                             pool.close()
                             pool.join()
 
-                            print('Completed execution for group', i)
-                            print(results)
+                            #print('Completed execution for group', i)
+                            #print(results)
                             # Clean up folders
                             for proc_folder in process_folders:
                                 shutil.rmtree(proc_folder)
                             population.live_pool[i].add_times(results)
                             chdir(folder)
                         else:
+                            population.live_pool[i].add_times([10000000])
                             chdir('..')
-                            print("failed")
+                            fail_count = fail_count + 1
+                            # print("failed")
+
+
+                    if (count % 5 == 0):
+                        s = 0
+                        for datum in population.live_pool:
+                            if len(datum.times) != 0:
+                                s += datum.times[-1]
+                        s //= population.pop_size
 
                     population.evaluate()
                     population.selection()
+
+                    if (count % 5 == 0):
+                        print('Iteration %d, failed compiles %d, history length %d' % (count, fail_count,len(population.history)))
+                        print('Population average time: %d' % (s))
+
+
                     count = count + 1
                 chdir('..')
                 population.write_to_file('../results/gcc/')
-                break
 
-        print('program compleated')
+    print('program completed')
 
 
 main()
