@@ -1,4 +1,4 @@
-Entering  401.bzip2_2
+Entering  401.bzip2
 Iteration 0, failed compiles 11, history length 15
 Population average time: 7334501
 Iteration 5, failed compiles 1, history length 90
@@ -53,7 +53,6 @@ Iteration 15, failed compiles 2, history length 240
 Population average time: 1333460
 Iteration 20, failed compiles 3, history length 315
 Population average time: 2000100
-Entering  401.bzip2_1
 Entering  470.lbm
 Iteration 0, failed compiles 12, history length 15
 Population average time: 8001207
@@ -99,11 +98,6 @@ Population average time: 1271
 Iteration 20, failed compiles 0, history length 315
 Population average time: 1188
 Entering  445.gobmk
-Iteration 0, failed compiles 11, history length 15
-Population average time: 7338545
-Iteration 5, failed compiles 1, history length 90
-Population average time: 683547
-Entering  445.gobmk
 Iteration 0, failed compiles 14, history length 15
 Population average time: 9334623
 Iteration 5, failed compiles 3, history length 90
@@ -137,13 +131,6 @@ Population average time: 2668825
 Iteration 20, failed compiles 1, history length 315
 Population average time: 669428
 Entering  433.milc
-Iteration 0, failed compiles 11, history length 15
-Population average time: 7340742
-Iteration 5, failed compiles 3, history length 90
-Population average time: 2014178
-Iteration 10, failed compiles 2, history length 165
-Population average time: 1349401
-Entering  433.milc
 Iteration 0, failed compiles 9, history length 15
 Population average time: 6010413
 Iteration 5, failed compiles 2, history length 90
@@ -154,4 +141,3 @@ Iteration 15, failed compiles 1, history length 240
 Population average time: 686548
 Iteration 20, failed compiles 1, history length 315
 Population average time: 685616
-program completed

@@ -34,7 +34,7 @@ Whilst we are aware that work has already been done in using GAs for compiler op
 \section{Evaluation Methodolgy}
 We first set about ensuring all our benchmarks would compile on the backend of our compute cluster through PBS scripts. Once we were satisfied, we began development of our Genetic Algorithm. We decided to use Python3, as it is a versitile scripting language with good support for running other programs, and receiving from the STDOUT stream. Although Python3 does lack somewhat in speed, it is inconsequential for our needs, as most of the program's execution time would be spent compiling and running the benchmarks.
 
-We decided to not use flags which could be expressed in a binary on/off format, like \texttt{-fsched-critical-path-heuristic} 
+We decided to not use flags which could be expressed in a binary on/off format, like \texttt{-fsched-critical-path-heuristic}
 
 Our algorithm was ported from a simple JavaScript implementation\cite{Shiffman16}, and then fine tuned to our needs. The purpose of the original GA was help rockets develop a path to a fixed point around an obstacle. In our GA, we attempted to find the quickest run time for our groupings of compiler flags.
 
@@ -58,11 +58,49 @@ For the duration of the experiment run time, we had exlusive access to the back 
 \section{Results}
 Lots of tables here, if not figures. Will definitely need a good script for this.
 
+\subsection{Best Times for individual programs}
+The corresponding flags for these times can be found in appendix. Values below are given in milliseconds.
+\begin{itemize}[\IEEEsetlabelwidth{Z}]
+  \item \textbf{401.bzip2}: 4129
+  \item \textbf{429.mcf}: 2499
+  \item \textbf{433.milc}: 15519
+  \item \textbf{445.gobmk}: 18188
+  \item \textbf{456.hmmer}: 2241
+  \item \textbf{458.sjeng}: 3523
+  \item \textbf{462.libquantum}: 704
+  \item \textbf{464.h264ref}: 12039
+  \item \textbf{470.lbm}: 3224
+  \item \textbf{h263dec}: 109
+  \item \textbf{mpeg2dec}: 194
+  \item \textbf{mpeg2enc}: 2071
+\end{itemize}
+
 \section{Analysis}
 What do the results mean
 
 \section{Conclusion}
 God this was exhausting. It's only 25\%? That's mad.
+
+\appendix[Detailed Results]
+Best times and flags
+\begin{itemize}[\IEEEsetlabelwidth{Z}]
+  \item \textbf{401.bzip2}: 4129
+
+  -faggressive-loop-optimizations -fassociative-math -fbranch-target-load-optimize -fbtr-bb-exclusive -fcaller-saves -fcombine-stack-adjustments -fcprop-registers -fcse-follow-jumps -fcse-skip-blocks -fcx-fortran-rules -fdelayed-branch -fdelete-null-pointer-checks -fdevirtualize-at-ltrans -fearly-inlining -fipa-sra -ffloat-store -fforward-propagate -ffunction-sections -fgcse -fgcse-after-reload -fgraphite-identity -finline-functions-called-once -fipa-cp -fipa-cp-alignment -fipa-profile -fipa-pure-const -fipa-icf -fira-hoist-pressure -fira-loop-pressure -fno-ira-share-save-slots -fivopts -fkeep-static-consts -flive-range-shrinkage -floop-block -floop-interchange -floop-parallelize-all -flto -fmerge-all-constants -fmove-loop-invariants -fno-branch-count-reg -fno-inline -fno-peephole2 -fno-sched-spec -fno-signed-zeros -fno-trapping-math -fno-zero-initialized-in-bss -foptimize-sibling-calls -fprofile-correction -fprofile-values -fprofile-reorder-functions -freorder-blocks-and-partition -freorder-functions -freschedule-modulo-scheduled-loops -frounding-math -fsched-pressure -fsched-spec-insn-heuristic -fsched-dep-count-heuristic -fschedule-fusion -fselective-scheduling2 -fsel-sched-pipelining-outer-loops -fsingle-precision-constant -fsplit-ivs-in-unroller -fssa-phiopt -fstdarg-opt -fstrict-overflow -ftree-ccp -ftree-copy-prop -ftree-dominator-opts -ftree-dse -ftree-fre -ftree-loop-ivcanon -ftree-loop-linear -ftree-pta -ftree-sink -ftree-slsr -ftree-sra -ftree-ter -ftree-vectorize -ftree-vrp -funit-at-a-time -funroll-all-loops -funsafe-loop-optimizations -funsafe-math-optimizations -funswitch-loops -fipa-ra -fvpt -fuse-linker-plugin -O -O1 -O2 -O3
+  \item \textbf{429.mcf}: 2499
+  -fassociative-math -fbranch-target-load-optimize -fbranch-target-load-optimize2 -fcaller-saves -fcombine-stack-adjustments -fcompare-elim -fcprop-registers -fcse-follow-jumps -fcx-limited-range -fdata-sections -fdelayed-branch -fdevirtualize-at-ltrans -fdse -fexpensive-optimizations -ffat-lto-objects -ffinite-math-only -fforward-propagate -fgcse -fif-conversion2 -finline-functions-called-once -finline-small-functions -fipa-cp-alignment -fipa-profile -fipa-reference -fipa-icf -fira-loop-pressure -fisolate-erroneous-paths-dereference -fisolate-erroneous-paths-attribute -fivopts -fkeep-inline-functions -fkeep-static-functions -fkeep-static-consts -floop-block -floop-unroll-and-jam -floop-nest-optimize -flto -fmerge-constants -fmove-loop-invariants -fno-defer-pop -fno-function-cse -fno-math-errno -fno-peephole2 -fno-toplevel-reorder -fomit-frame-pointer -foptimize-sibling-calls -fpartial-inlining -fpeel-loops -fpredictive-commoning -fprofile-correction -fprofile-values -freciprocal-math -free -frename-registers -freorder-blocks -freorder-blocks-and-partition -freorder-functions -fsched2-use-superblocks -fsched-pressure -fsched-spec-load -fsched-critical-path-heuristic -fsched-spec-insn-heuristic -fsched-rank-heuristic -fsched-last-insn-heuristic -fschedule-insns -fsel-sched-pipelining -fsel-sched-pipelining-outer-loops -fshrink-wrap -fsplit-ivs-in-unroller -fsplit-paths -fssa-backprop -fstrict-aliasing -fthread-jumps -ftree-bit-ccp -ftree-builtin-call-dce -ftree-dominator-opts -ftree-forwprop -ftree-loop-if-convert -ftree-loop-if-convert-stores -ftree-phiprop -ftree-loop-distribution -ftree-partial-pre -ftree-tail-merge -ftree-ter -ftree-vectorize -funconstrained-commons -funit-at-a-time -funroll-all-loops -funsafe-loop-optimizations -funsafe-math-optimizations -fipa-ra -fvariable-expansion-in-unroller -fvect-cost-model -fweb -fuse-linker-plugin -O -O1 -Os -Ofast
+  \item \textbf{433.milc}: 15519
+  -fassociative-math -fauto-inc-dec -fbranch-probabilities -fcaller-saves -fcombine-stack-adjustments -fconserve-stack -fcompare-elim -fcprop-registers -fdelete-null-pointer-checks -fdevirtualize -fdevirtualize-speculatively -fdse -fearly-inlining -fexpensive-optimizations -ffat-lto-objects -ffinite-math-only -fforward-propagate -fgcse-las -fgraphite-identity -fif-conversion2 -findirect-inlining -finline-functions-called-once -finline-small-functions -fipa-cp -fipa-cp-alignment -fipa-profile -fipa-pure-const -fisolate-erroneous-paths-attribute -fkeep-static-consts -floop-interchange -floop-nest-optimize -floop-parallelize-all -flto -fmerge-all-constants -fmerge-constants -fmodulo-sched-allow-regmoves -fno-branch-count-reg -fno-defer-pop -fno-function-cse -fno-peephole -fno-peephole2 -fno-sched-interblock -fno-toplevel-reorder -foptimize-sibling-calls -fpeel-loops -fprefetch-loop-arrays -fprofile-use -fprofile-values -free -freorder-functions -frerun-cse-after-loop -frounding-math -fsched-dep-count-heuristic -fschedule-fusion -fsel-sched-pipelining -fsel-sched-pipelining-outer-loops -fsemantic-interposition -fsplit-ivs-in-unroller -fstdarg-opt -fstrict-aliasing -fstrict-overflow -ftracer -ftree-builtin-call-dce -ftree-ch -ftree-coalesce-vars -ftree-dominator-opts -ftree-dse -ftree-loop-if-convert-stores -ftree-loop-distribution -ftree-loop-distribute-patterns -ftree-loop-optimize -ftree-pre -ftree-partial-pre -ftree-pta -ftree-reassoc -ftree-slsr -ftree-sra -ftree-tail-merge -ftree-ter -ftree-vectorize -ftree-vrp -funconstrained-commons -funroll-all-loops -funroll-loops -funsafe-loop-optimizations -funswitch-loops -fipa-ra -fvariable-expansion-in-unroller -fvect-cost-model -fuse-linker-plugin -O -O2 -Ofast
+  \item \textbf{445.gobmk}: 18188
+  \item \textbf{456.hmmer}: 2241
+  \item \textbf{458.sjeng}: 3523
+  \item \textbf{462.libquantum}: 704
+  \item \textbf{464.h264ref}: 12039
+  \item \textbf{470.lbm}: 3224
+  \item \textbf{h263dec}: 109
+  \item \textbf{mpeg2dec}: 194
+  \item \textbf{mpeg2enc}: 2071
+\end{itemize}
 
 \bibliographystyle{plain}
 \bibliography{bib}
